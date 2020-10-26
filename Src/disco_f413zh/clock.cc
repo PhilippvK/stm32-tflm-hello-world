@@ -1,4 +1,15 @@
-// Copyright 2020 <TODO>
+/**
+  ******************************************************************************
+  * File Name          : clock.cc
+  * Author             : Philipp v. K. <philipp.van-kempen@tum.de>
+  * Description        : This file is used to configure the MCUs clock
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright 2020 <TODO>
+  *
+  ******************************************************************************
+  */
 
 #include "clock.h"
 
@@ -6,7 +17,7 @@
   * @brief System Clock Configuration
   * @retval None
   *
-  * TODO: Add Clock Values
+  * TODO(PhilippvK): Add Clock Values
   */
 void SystemClock_Config(void) {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

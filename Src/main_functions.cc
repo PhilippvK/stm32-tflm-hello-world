@@ -11,6 +11,14 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+Modifications by @PhilippvK:
+- Support tflite_micro_compiler by defining `TFLM_MODE_COMPILER`
+  See: https://github.com/tum-ei-eda/tflite_micro_compiler
+- Support Benchmarking by defining `BENCHMARKING`
+  See: https://github.com/PhilippvK/stm32-tflm-benchmarking
+- Changed formatting according to cpplint
+
 ==============================================================================*/
 
 

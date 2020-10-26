@@ -1,11 +1,16 @@
 /**
   ******************************************************************************
-  * @file           : main.cpp
-  * @brief          : Main program body
+  * @file           : main.cc
+  * @author         : Philipp v. K. <philipp.van-kempen@tum.de>
+  * @brief          : Main program for hello_world example
+  *                   Initializes Peripherals and calls Setup- and
+  *                   Loop-Routines of TFLite Model
   ******************************************************************************
   * @attention
   *
-  * TODO: License
+  * The file was originally generated with
+  * STM32CubeIDE [Copyright (c) 2020 STMicroelectronics]
+  * but modified intensively.
   *
   * Copyright 2020 <TODO>
   *
@@ -40,7 +45,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Private function prototypes -----------------------------------------------*/
-static void BSP_Init(void);
 static void BSP_Welcome(void);
 
 /* Private user code ---------------------------------------------------------*/
@@ -89,7 +93,7 @@ int main(void) {
 
 
 /**
-  * @brief TODO
+  * @brief Method for polling the state of the USER button (blue)
   * @retval uint8_t (1 when button clicked)
   *
   */
@@ -99,40 +103,6 @@ uint8_t CheckForUserInput(void) {
     return 1;
   }
   return 0;
-}
-
-/**
-  * @brief Board Support Package Initialization
-  * @retval None
-  *
-  */
-static void BSP_Init(void) {
-  /* Configure LEDs */
-  BSP_LED_Init(LED_GREEN);
-  BSP_LED_Init(LED_RED);
-  BSP_LED_On(LED_GREEN);
-
-  /* Configure Button */
-  BSP_PB_Init(BUTTON_WAKEUP, BUTTON_MODE_GPIO);
-  /* Configure LCD */
-  /* Initialize the LCD */
-  uint8_t  lcd_status = LCD_OK;
-  lcd_status = BSP_LCD_Init();
-  while (lcd_status != LCD_OK) {}
-#ifdef STM32_BOARD_STM32F769I_DISCOVERY
-  BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
-#endif /* STM32_BOARD_STM32F769I_DISCOVERY */
-  BSP_LCD_Clear(LCD_COLOR_WHITE);
-
-  /* Configure Touchscreen (optional) */
-  // Touchscreen_Calibration();
-  BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
-
-  /* Set Default LCD Colors and Fonts */
-  BSP_LCD_Clear(LCD_COLOR_WHITE);
-  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-  BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-  BSP_LCD_SetFont(&Font12);
 }
 
 /**

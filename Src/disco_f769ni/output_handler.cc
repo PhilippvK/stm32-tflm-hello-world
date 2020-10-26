@@ -11,19 +11,21 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+Modifications by @PhilippvK:
+- Support STM32F769NI instead of STM32F413NG
+- Changed formatting according to cpplint
+- Removed prefix from Includes
+
 ==============================================================================*/
 
-#include "tensorflow/lite/micro/examples/hello_world/output_handler.h"
-
-#include "stm32f769i_discovery_lcd.h"
-#include "tensorflow/lite/micro/examples/hello_world/constants.h"
+#include "output_handler.h"
+#include "constants.h"
+#include "stm32f769i_discovery_lcd.h" // BSP Driver for LCD
 
 // Track whether the function has run at least once
 bool initialized = false;
-/*
-// The LCD driver
-LCD_DISCO_F746NG lcd;
-*/
+
 // The colors we'll draw
 const uint32_t background_color = 0xFFF4B400;  // Yellow
 const uint32_t foreground_color = 0xFFDB4437;  // Red
