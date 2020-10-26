@@ -1,17 +1,17 @@
 /**
   ******************************************************************************
   * @file    stm32f7xx_it.h
+  * @author  (partially) MCD Application Team
+  * @author  Philipp v. K. <philipp.van-kempen@tum.de>
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * [Copyright (c) 2020 STMicroelectronics]
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * Modifications by @PhilippvK
+  * - Cleaned up to have a minimal config
+  * - Changed formatting according to cpplint
   *
  ******************************************************************************
   */
@@ -43,12 +43,6 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-
-void DMA2_Stream0_IRQHandler(void);
-void DMA2_Stream5_IRQHandler(void);
-void AUDIO_DFSDMx_DMAx_BUTTOM_LEFT_IRQHandler(void);
-void AUDIO_DFSDMx_DMAx_BUTTOM_RIGHT_IRQHandler(void);
-void AUDIO_OUT_SAIx_DMAx_IRQHandler(void);
 
 #ifdef __cplusplus
 }

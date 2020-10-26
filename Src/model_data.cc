@@ -11,6 +11,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+Modifications by @PhilippvK:
+- Replaced array data with self-generated model
+- Changed formatting according to cpplint
+
 ==============================================================================*/
 
 // Automatically created from a TensorFlow Lite flatbuffer using the command:
@@ -19,8 +24,6 @@ limitations under the License.
 // This is a standard TensorFlow Lite model file that has been converted into a
 // C data array, so it can be easily compiled into a binary for devices that
 // don't have a file system.
-
-// See train/README.md for a full description of the creation process.
 
 #include "model_data.h"
 

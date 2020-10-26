@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/lite/micro/examples/hello_world/constants.h"
+#include "constants.h"
 
 // A larger number than the default to make the animation smoother
 const int kInferencesPerCycle = 32;
