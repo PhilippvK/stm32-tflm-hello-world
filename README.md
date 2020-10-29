@@ -4,6 +4,10 @@ This demo is a simple Neural Network powered estimator for the values of the *si
 
 You may also be interested in our wrapper repository [stm32-tflm-demos](https://github.com/PhilippvK/stm32-tflm-demos) for further details.
 
+## Demo
+
+![](hello_world_demo.gif)
+
 ## Build
 ```
 mkdir build
