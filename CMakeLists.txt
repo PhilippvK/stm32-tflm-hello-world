@@ -46,12 +46,6 @@ ENDIF()
 #SET(TFLM_MODE compiler)
 SET(TFLM_MODE interpreter)
 
-# (TODO)
-IF(${TFLM_MODE} STREQUAL compiler)
-  SET(CMAKE_TFLM_COMPILER_FILE ${CMAKE_MODULE_PATH}/tflm_compiler.cmake)
-  INCLUDE(${CMAKE_TFLM_COMPILER_FILE})
-ENDIF()
-
 ### Enable/Disable usage of CMSISNN custom kernels ###
 SET(TFLM_USE_CMSIS_NN ON)
 IF(${TFLM_USE_CMSIS_NN})
@@ -154,7 +148,7 @@ INCLUDE_DIRECTORIES(
     ${CMAKE_CURRENT_SOURCE_DIR}
     "${PROJECT_SOURCE_DIR}/Src"
     "${PROJECT_SOURCE_DIR}/Src/misc"
-    "${PROJECT_SOURCE_DIR}/Src/benchmarking"
+    "${PROJECT_SOURCE_DIR}/Src/misc/benchmarking"
     "${PROJECT_SOURCE_DIR}/Src/${TFLM_BOARD}"
     ${STM32HAL_INCLUDE_DIR}
     ${STM32LL_INCLUDE_DIR}
