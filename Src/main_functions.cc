@@ -45,9 +45,7 @@ Modifications by @PhilippvK:
 #include "output_handler.h"
 #endif /* TFLM_MODE_COMPILER */
 
-#ifdef BENCHMARKING
 #include "benchmarking.h"
-#endif /* BENCHMARKING */
 
 // Globals, used for compatibility with Arduino-style sketches.
 namespace {
@@ -130,14 +128,15 @@ void setup() {
 
 // The name of this function is important for Arduino compatibility.
 void loop() {
+  DECLARE_BENCHMARK(populate);
+  DECLARE_BENCHMARK(invoke);
+  DECLARE_BENCHMARK(respond);
+
   // Calculate an x value to feed into the model. We compare the current
   // inference_count to the number of inferences per cycle to determine
   // our position within the range of possible x values the model was
   // trained on, and use this to calculate a value.
-#ifdef BENCHMARKING
-  uint32_t ticks_before, ticks_after;
-  ticks_before = HAL_GetTick();
-#endif /* BENCHMARKING */
+  START_BENCHMARK(populate);
   float position = static_cast<float>(inference_count) /
                    static_cast<float>(kInferencesPerCycle);
   float x_val = position * kXrange;
@@ -148,15 +147,10 @@ void loop() {
 #else
   input->data.f[0] = x_val;
 #endif /* TFLM_MODE_COMPILER */
-#ifdef BENCHMARKING
-  ticks_after = HAL_GetTick();
-  update_avg_ticks(TICKS_POPULATE, (int32_t)(ticks_after-ticks_before));
-#endif /* BENCHMARKING */
+  STOP_BENCHMARK(populate);
 
   // Run inference, and report any error
-#ifdef BENCHMARKING
-  ticks_before = HAL_GetTick();
-#endif /* BENCHMARKING */
+  START_BENCHMARK(invoke);
 #ifdef TFLM_MODE_COMPILER
   hello_world_invoke();
 #else
@@ -167,15 +161,10 @@ void loop() {
     return;
   }
 #endif /* TFLM_MODE_COMPILER */
-#ifdef BENCHMARKING
-  ticks_after = HAL_GetTick();
-  update_avg_ticks(TICKS_INVOKE, (int32_t)(ticks_after-ticks_before));
-#endif /* BENCHMARKING */
+  STOP_BENCHMARK(invoke);
 
   // Read the predicted y value from the model's output tensor
-#ifdef BENCHMARKING
-  ticks_before = HAL_GetTick();
-#endif /* BENCHMARKING */
+  START_BENCHMARK(respond);
 #ifdef TFLM_MODE_COMPILER
   float y_val = tflite::GetTensorData<float>(hello_world_output(0))[0];
 #else
@@ -194,8 +183,11 @@ void loop() {
   // the total number per cycle
   inference_count += 1;
   if (inference_count >= kInferencesPerCycle) inference_count = 0;
-#ifdef BENCHMARKING
-  ticks_after = HAL_GetTick();
-  update_avg_ticks(TICKS_RESPOND, (int32_t)(ticks_after-ticks_before));
-#endif /* BENCHMARKING */
+  STOP_BENCHMARK(respond);
+
+  // The following lines will only run if benchmarking is enabled in CMakeLists.txt
+  PRINT_TIMESTAMP();
+  PRINT_BENCHMARK(populate);
+  PRINT_BENCHMARK(invoke);
+  PRINT_BENCHMARK(respond);
 }

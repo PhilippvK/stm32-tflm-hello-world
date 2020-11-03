@@ -31,10 +31,6 @@
 /* TFLM Includes -------------------------------------------------------------*/
 #include "main_functions.h"
 
-#ifdef BENCHMARKING
-#include "benchmarking.h"
-#endif /* BENCHMARKING */
-
 /* Private typedef -----------------------------------------------------------*/
 
 /* Private define ------------------------------------------------------------*/
@@ -82,10 +78,6 @@ int main(void) {
 #ifdef HELLO_WOLRD_DELAY_MS
     HAL_Delay(HELLO_WOLRD_DELAY_MS);
 #endif /* HELLO_WOLRD_DELAY_MS */
-
-#ifdef BENCHMARKING
-    print_summary(TICKS_POPULATE|TICKS_INVOKE|TICKS_RESPOND);
-#endif /* BENCHMARKING */
   }
 
   return 0;
