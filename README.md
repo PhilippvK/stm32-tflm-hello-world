@@ -28,6 +28,7 @@ git clone --recursive https://github.com/tensorflow/tensorflow.git $SOME_DIRECTO
 git clone https://github.com/mborgerding/kissfft.git $SOME_DIRECTORY/kissfft
 git clone https://github.com/STMicroelectronics/STM32CubeF4 $SOME_DIRECTORY/STM32CubeF4
 git clone https://github.com/STMicroelectronics/STM32CubeF7 $SOME_DIRECTORY/STM32CubeF7
+git clone https://github.com/ARM-software/CMSIS_5.git $SOME_DIRECTORY/CMSIS_5
 $SOME_DIRECTORY/tensorflow/tensorflow/lite/tools/make/download_dependencies.sh
 ```
 
